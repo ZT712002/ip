@@ -9,12 +9,10 @@ public class Joebot666 {
         }
     }
     public static void insertItem(String[] storeString, String userInput){
-        int dividerPosition = userInput.indexOf(" ");
-        String itemName = userInput.substring(dividerPosition);
         for(int i = 0; i < storeString.length; i++){
             if(storeString[i] == null){
-                storeString[i] = itemName;
-                System.out.println("You have added " + itemName + " to your reading list.");
+                storeString[i] = userInput;
+                System.out.println("You have added " + userInput + " to your reading list.");
                 break;
             }
         }
