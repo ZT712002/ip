@@ -6,7 +6,7 @@ public class Joebot666 {
         System.out.println("Hello I'm JoeBot666");
         System.out.println("What can I do for you today?");
 
-        TaskList taskList = new TaskList();
+        TaskList tasks = new TaskList();
         Scanner in = new Scanner(System.in);
         String userInput;
 
@@ -18,12 +18,12 @@ public class Joebot666 {
 
             switch (command) {
             case "list":
-                taskList.listTasks();
+                tasks.listTasks();
                 break;
             case "mark":
                 try {
                     int itemNumber = Integer.parseInt(commandParts[1]);
-                    taskList.markTask(itemNumber);
+                    tasks.markTask(itemNumber);
                 } catch (Exception e) {
                     System.out.println("Please provide a valid item number to mark.");
                 }
@@ -31,7 +31,7 @@ public class Joebot666 {
             case "unmark":
                 try {
                     int itemNumber = Integer.parseInt(commandParts[1]);
-                    taskList.unmarkTask(itemNumber);
+                    tasks.unmarkTask(itemNumber);
                 } catch (Exception e) {
                     System.out.println("Please provide a valid item number to unmark.");
                 }
@@ -39,7 +39,7 @@ public class Joebot666 {
             case "bye":
                 break;
             default:
-                taskList.addTask(userInput);
+                tasks.addTask(userInput);
                 break;
             }
         } while (!userInput.equalsIgnoreCase("bye"));
