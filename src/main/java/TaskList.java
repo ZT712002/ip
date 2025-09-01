@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> tasks;
+    private final ArrayList<Task> tasks;
 
     public TaskList() {
         this.tasks = new ArrayList<>();
@@ -19,7 +19,7 @@ public class TaskList {
         }
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            // The toString() method of the Task class is called automatically.
+            // The toString() method of the Tgit git ask class is called automatically.
             System.out.println((i + 1) + ". " + tasks.get(i));
         }
     }
