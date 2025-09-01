@@ -11,8 +11,6 @@ public class Joebot666 {
             passer.setUserInput();
             passer.processCommand(passer.getUserinput(), tasks);
         }
-
-
         System.out.println("Bye. See you next time!");
         System.out.println("*************************************");
     }

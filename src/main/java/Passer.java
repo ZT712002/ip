@@ -51,6 +51,9 @@ public class Passer {
             case "event":
                 handleEvent(tasks, arguments);
                 break;
+            case "bye":
+                setPasserActive(false);
+                break;
             }
 
         } catch (Exception e){
@@ -80,13 +83,13 @@ public class Passer {
     private void handleEvent(TaskList tasks, String arguments) {
         String[] parts = arguments.split(" /from");
         if (parts.length < 2) {
-            System.out.println("Please provide both description and start time for the event in this format" +
+            System.out.println("Please provide both description and start time for the event in this format " +
                     "event <description> /from <start> /to <end>.");
             return;
         }
         String[] timeParts = parts[1].split(" /to");
         if (timeParts.length < 2) {
-            System.out.println("Please provide both description and start time for the event in this format" +
+            System.out.println("Please provide both description and start time for the event in this format " +
                     "event <description> /from <start> /to <end>.");
             return;
         }
@@ -95,7 +98,7 @@ public class Passer {
     private void handleDeadline(TaskList tasks, String arguments) {
         String[] parts = arguments.split(" /by");
         if (parts.length < 2) {
-            System.out.println("Please provide both description and due date for the deadline in this format" +
+            System.out.println("Please provide both description and due date for the deadline in this format " +
                     "deadline <description> /by <due date>.");
             return;
         }
