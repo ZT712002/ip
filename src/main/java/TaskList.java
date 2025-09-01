@@ -7,9 +7,11 @@ public class TaskList {
         this.tasks = new ArrayList<>();
     }
 
-    public void addTask(String description) {
-        tasks.add(new Task(description));
-        System.out.println("You have added \"" + description + "\" to your task list.");
+    public void addTask(Task task) {
+        tasks.add(task);
+        System.out.println("Got it. I've added this task:");
+        System.out.println("  " + task);
+        System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
 
     public void listTasks() {
@@ -19,7 +21,6 @@ public class TaskList {
         }
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
-            // The toString() method of the Tgit git ask class is called automatically.
             System.out.println((i + 1) + ". " + tasks.get(i));
         }
     }
