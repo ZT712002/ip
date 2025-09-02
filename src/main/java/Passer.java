@@ -80,7 +80,7 @@ public class Passer {
             System.out.println("The description of a todo cannot be empty.");
             return;
         }
-        tasks.addTask(new ToDo(arguments));
+        tasks.addTask(new Todo(arguments));
     }
 
     private void handleEvent(TaskList tasks, String arguments) {
