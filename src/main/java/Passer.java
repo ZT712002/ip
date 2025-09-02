@@ -6,7 +6,7 @@ public class Passer {
     private String userInput;
 
 
-    public String getUserinput() {
+    public String getUserInput() {
         return userInput;
     }
 

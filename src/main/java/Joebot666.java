@@ -9,7 +9,7 @@ public class Joebot666 {
         while (passer.isPasserActive()) {
             System.out.println("*************************************");
             passer.setUserInput();
-            passer.processCommand(passer.getUserinput(), tasks);
+            passer.processCommand(passer.getUserInput(), tasks);
         }
         System.out.println("Bye. See you next time!");
         System.out.println("*************************************");
