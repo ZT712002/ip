@@ -29,10 +29,10 @@ public class Passer {
 
     public void processCommand(String userInput, TaskList tasks) {
         String[] commandParts = userInput.split(" ", 2);
-        String command  = commandParts[0].toLowerCase();
+        String command = commandParts[0].toLowerCase();
         String arguments = commandParts.length > 1 ? commandParts[1] : "";
         try {
-            switch(command) {
+            switch (command) {
             case "list":
                 tasks.listTasks();
                 break;
@@ -56,11 +56,12 @@ public class Passer {
                 break;
             }
 
-        } catch (Exception e){
-                System.out.println("An error occurred: " + e.getMessage());
-            }
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
 
     }
+
     private void handleMarkUnmark(TaskList tasks, String arguments, boolean isMark) {
         try {
             int taskNumber = Integer.parseInt(arguments.trim());
@@ -73,6 +74,7 @@ public class Passer {
             System.out.println("Please provide a valid task number.");
         }
     }
+
     private void handleTodo(TaskList tasks, String arguments) {
         if (arguments.isEmpty()) {
             System.out.println("The description of a todo cannot be empty.");
@@ -80,6 +82,7 @@ public class Passer {
         }
         tasks.addTask(new ToDo(arguments));
     }
+
     private void handleEvent(TaskList tasks, String arguments) {
         String[] parts = arguments.split(" /from");
         if (parts.length < 2) {
@@ -95,6 +98,7 @@ public class Passer {
         }
         tasks.addTask(new Event(parts[0], timeParts[0], timeParts[1]));
     }
+
     private void handleDeadline(TaskList tasks, String arguments) {
         String[] parts = arguments.split(" /by");
         if (parts.length < 2) {

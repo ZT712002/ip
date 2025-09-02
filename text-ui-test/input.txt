@@ -1,0 +1,18 @@
+todo read book
+deadline return book /by next monday
+event project meeting /from Aug 6th 2pm /to 4pm
+todo buy groceries
+deadline submit assignment /by Aug 10th
+event birthday party /from Aug 15th 7pm /to 9pm
+mark 1
+mark 2
+list
+mark 3
+mark 4
+mark 5
+unmark 1
+unmark 2
+unmark 3
+unmark 4
+unmark 5
+bye
