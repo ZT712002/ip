@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Passer {
-    private final Scanner in;
+    private final Scanner IN;
     private boolean isPasserActive;
     private String userInput;
 
@@ -11,12 +11,12 @@ public class Passer {
     }
 
     public Passer() {
-        this.in = new Scanner(System.in);
+        this.IN = new Scanner(System.in);
         this.isPasserActive = true;
     }
 
     public void setUserInput() {
-        this.userInput = in.nextLine();
+        this.userInput = IN.nextLine();
     }
 
     public boolean isPasserActive() {
