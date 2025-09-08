@@ -1,5 +1,6 @@
 package command;
 
+import exception.IllegalTaskNumberException;
 import logic.TaskList;
 import tasks.Deadline;
 import tasks.Event;
@@ -82,6 +83,8 @@ public class Passer {
             }
         } catch (NumberFormatException e) {
             System.out.println("Please provide a valid task number.");
+        } catch (IllegalTaskNumberException e) {
+            throw new RuntimeException(e);
         }
     }
 
