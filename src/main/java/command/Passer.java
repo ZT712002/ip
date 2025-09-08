@@ -1,3 +1,11 @@
+package command;
+
+import exception.IllegalTaskNumberException;
+import logic.TaskList;
+import tasks.Deadline;
+import tasks.Event;
+import tasks.Todo;
+
 import java.util.Scanner;
 
 public class Passer {
@@ -23,8 +31,8 @@ public class Passer {
         return isPasserActive;
     }
 
-    public void setPasserActive(boolean passerActive) {
-        isPasserActive = passerActive;
+    public void setIsPasserActiveOff() {
+        isPasserActive = false;
     }
 
     public void processCommand(String userInput, TaskList tasks) {
@@ -52,8 +60,11 @@ public class Passer {
                 handleEvent(tasks, arguments);
                 break;
             case "bye":
-                setPasserActive(false);
+                setIsPasserActiveOff();
                 break;
+            default:
+                System.out.println("I'm sorry, but I don't know what that means.");
+
             }
 
         } catch (Exception e) {
@@ -72,6 +83,8 @@ public class Passer {
             }
         } catch (NumberFormatException e) {
             System.out.println("Please provide a valid task number.");
+        } catch (IllegalTaskNumberException e) {
+            throw new RuntimeException(e);
         }
     }
 
