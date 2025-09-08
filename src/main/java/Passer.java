@@ -54,6 +54,9 @@ public class Passer {
             case "bye":
                 setIsPasserActiveOff();
                 break;
+            default:
+                System.out.println("I'm sorry, but I don't know what that means.");
+
             }
 
         } catch (Exception e) {
