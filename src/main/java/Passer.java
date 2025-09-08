@@ -23,8 +23,8 @@ public class Passer {
         return isPasserActive;
     }
 
-    public void setPasserActive(boolean passerActive) {
-        isPasserActive = passerActive;
+    public void setIsPasserActiveOff() {
+        isPasserActive = false;
     }
 
     public void processCommand(String userInput, TaskList tasks) {
@@ -52,7 +52,7 @@ public class Passer {
                 handleEvent(tasks, arguments);
                 break;
             case "bye":
-                setPasserActive(false);
+                setIsPasserActiveOff();
                 break;
             }
 
