@@ -1,3 +1,10 @@
+package command;
+
+import logic.TaskList;
+import tasks.Deadline;
+import tasks.Event;
+import tasks.Todo;
+
 import java.util.Scanner;
 
 public class Passer {
