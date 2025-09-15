@@ -6,8 +6,9 @@ import tasks.Deadline;
 import tasks.Event;
 import tasks.Todo;
 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,6 +69,7 @@ public class Passer {
                 handleEvent(tasks, arguments);
                 break;
             case "bye":
+                save_data(tasks);
                 setIsPasserActiveOff();
                 break;
             default:
@@ -79,6 +81,24 @@ public class Passer {
             System.out.println("An error occurred: " + e.getMessage());
         }
 
+    }
+
+    private void save_data(TaskList tasks) throws IOException {
+        //todo save data to file
+        System.out.println("Saving Data Now...");
+        String fileName = FILE_PATH + FILE_NAME;
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+        try {
+            for (int i = 0; i < tasks.getSize(); i++) {
+                String taskString = tasks.getTask(i);
+                bw.write(taskString);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } finally {
+            bw.close();
+        }
     }
 
     private void handleMarkUnmark(TaskList tasks, String arguments, boolean isMark) {
@@ -162,8 +182,6 @@ public class Passer {
                 System.out.println("Failed to create directory: " + e.getMessage());
             }
         }
-        else{
-            System.out.println("Directory Exists! Loading Data Now...");
-        }
+
     }
 }
