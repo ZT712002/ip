@@ -1,14 +1,17 @@
 import command.Passer;
 import logic.TaskList;
 
+import java.io.IOException;
+
+
 public class Joebot666 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Hello I'm JoeBot666");
         System.out.println("What can I do for you today?");
-
         TaskList tasks = new TaskList();
         Passer passer = new Passer();
+        passer.initializeList(tasks);
         while (passer.isPasserActive()) {
             System.out.println("*************************************");
             passer.setUserInput();
@@ -17,4 +20,5 @@ public class Joebot666 {
         System.out.println("Bye. See you next time!");
         System.out.println("*************************************");
     }
+
 }

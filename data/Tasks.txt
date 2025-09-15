@@ -1,0 +1,5 @@
+T , 1 , read book
+T , 0 , return book
+D , 0 , idk , testingfornow
+E , 1 , idk2 , now , later
+T , 1 , say hello

@@ -1,6 +1,8 @@
 package logic;
 
 import exception.IllegalTaskNumberException;
+import tasks.Deadline;
+import tasks.Event;
 import tasks.Task;
 
 import java.util.ArrayList;
@@ -17,6 +19,10 @@ public class TaskList {
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+    }
+    public void addTask(Task task, boolean isLoading){
+        //add task without printing when loading from file
+        tasks.add(task);
     }
 
     public void listTasks() {
@@ -62,6 +68,30 @@ public class TaskList {
 
     private boolean isValidIndex(int taskNumber) throws IllegalTaskNumberException {
         return taskNumber > 0 && taskNumber <= tasks.size();
+    }
+
+    public int getSize() {
+        return tasks.size();
+    }
+
+    public String getTask(int i) {
+        //Task temp = tasks.get(i);
+        String result ="";
+        if(tasks.get(i) instanceof Todo) {
+            Todo temp = (Todo) tasks.get(i);
+            result = "T , " + (temp.getStatusIcon().equals("[X]") ? "1" : "0") + " , " + temp.getDescription() + "\n";
+        }
+        else if (tasks.get(i) instanceof Deadline){
+            Deadline temp = (Deadline) tasks.get(i);
+            result = "D , " + (temp.getStatusIcon().equals("[X]") ? "1" : "0") + " , " + temp.getDescription() + " , "
+                    + ((Deadline) temp).getBy()+ "\n";
+        }
+        else if (tasks.get(i) instanceof Event){
+            Event temp = (Event) tasks.get(i);
+            result = "E , " + (temp.getStatusIcon().equals("[X]") ? "1" : "0") + " , " + temp.getDescription() + " , "
+                    + ((Event) temp).getFrom() + " , " + ((Event) temp).getTo()+ "\n";
+        }
+        return result;
     }
 
     public void deleteTask(int taskNumber) throws IllegalTaskNumberException {
