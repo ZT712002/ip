@@ -21,6 +21,10 @@ public class TaskList {
         System.out.println("  " + task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
+    public void addTask(Task task, boolean isLoading){
+        //add task without printing when loading from file
+        tasks.add(task);
+    }
 
     public void listTasks() {
         if (tasks.isEmpty()) {
