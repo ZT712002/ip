@@ -8,6 +8,7 @@ import tasks.Todo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -131,8 +132,24 @@ public class Passer {
 
     public void init_db() {
         checkIfPathExists();
+        try {
+            File file = new File(FILE_PATH + FILE_NAME);
+            if(!file.exists()) {
+                System.out.println("File does not exist. Creating new file...");
+                file.createNewFile();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Loading Data Now...");
+        load_data();
 
-        
+
+
+    }
+
+    private void load_data() {
+
     }
 
     private void checkIfPathExists() {
