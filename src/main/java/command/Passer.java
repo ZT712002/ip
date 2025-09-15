@@ -62,6 +62,9 @@ public class Passer {
             case "bye":
                 setIsPasserActiveOff();
                 break;
+            case "delete":
+                handleDelete(tasks, arguments);
+                break;
             default:
                 System.out.println("I'm sorry, but I don't know what that means.");
 
@@ -71,6 +74,17 @@ public class Passer {
             System.out.println("An error occurred: " + e.getMessage());
         }
 
+    }
+
+    private static void handleDelete(TaskList tasks, String arguments) {
+        try {
+            int taskNumber = Integer.parseInt(arguments.trim());
+            tasks.deleteTask(taskNumber);
+        } catch (NumberFormatException e) {
+            System.out.println("Please provide a valid task number.");
+        } catch (IllegalTaskNumberException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void handleMarkUnmark(TaskList tasks, String arguments, boolean isMark) {
