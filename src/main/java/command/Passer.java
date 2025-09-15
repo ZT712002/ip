@@ -6,12 +6,19 @@ import tasks.Deadline;
 import tasks.Event;
 import tasks.Todo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Passer {
     private final Scanner IN;
     private boolean isPasserActive;
     private String userInput;
+    public static final String FILE_PATH = "./data/";
+    public static final String FILE_NAME = "Tasks.txt";
 
 
     public String getUserInput() {
@@ -120,5 +127,26 @@ public class Passer {
             return;
         }
         tasks.addTask(new Deadline(parts[0], parts[1]));
+    }
+
+    public void init_db() {
+        checkIfPathExists();
+
+        
+    }
+
+    private void checkIfPathExists() {
+        Path dirPath = Paths.get(FILE_PATH);
+        if (!Files.exists(dirPath)) {
+            try {
+                Files.createDirectories(dirPath);
+                System.out.println("Directory created: " + dirPath.toAbsolutePath());
+            } catch (Exception e) {
+                System.out.println("Failed to create directory: " + e.getMessage());
+            }
+        }
+        else{
+            System.out.println("Directory Exists! Loading Data Now...");
+        }
     }
 }
