@@ -63,4 +63,19 @@ public class TaskList {
     private boolean isValidIndex(int taskNumber) throws IllegalTaskNumberException {
         return taskNumber > 0 && taskNumber <= tasks.size();
     }
+
+    public void deleteTask(int taskNumber) throws IllegalTaskNumberException {
+        try {
+            if (isValidIndex(taskNumber)) {
+                Task task = tasks.remove(taskNumber - 1);
+                System.out.println("Noted. I've removed this task:");
+                System.out.println("  " + task);
+                System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            } else {
+                System.out.println("Invalid task number.");
+            }
+        } catch (IllegalTaskNumberException e) {
+            throw new IllegalTaskNumberException();
+        }
+    }
 }
