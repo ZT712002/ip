@@ -1,4 +1,6 @@
 package storage;
+import logic.CustomDate;
+import logic.Parser;
 import logic.TaskList;
 import tasks.Deadline;
 import tasks.Event;
@@ -53,7 +55,8 @@ public class Storage {
                     break;
                 case "D":
                     String by = args[3].trim();
-                    Deadline deadline = new Deadline(description, by);
+                    CustomDate date = Parser.parseDate(by);
+                    Deadline deadline = new Deadline(description, date);
                     if (isDone) {
                         deadline.markAsDone();
                     }
@@ -62,7 +65,9 @@ public class Storage {
                 case "E":
                     String from = args[3].trim();
                     String to = args[4].trim();
-                    Event event = new Event(description, from, to);
+                    CustomDate dateFrom = Parser.parseDate(from);
+                    CustomDate dateTo = Parser.parseDate(to);
+                    Event event = new Event(description, dateFrom, dateTo);
                     if (isDone) {
                         event.markAsDone();
                     }

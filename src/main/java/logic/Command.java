@@ -119,17 +119,25 @@ public class Command {
                     "event <description> /from <start> /to <end>.");
             return;
         }
-        tasks.addTask(new Event(parts[0], timeParts[0], timeParts[1]));
+        CustomDate fromDate = Parser.parseDate(timeParts[0].trim());
+        CustomDate toDate = Parser.parseDate(timeParts[1].trim());
+        if (fromDate.isAfter(toDate)) {
+            System.out.println("The start time cannot be after the end time.");
+            return;
+        }
+        tasks.addTask(new Event(parts[0], fromDate, toDate));
     }
 
     private void handleDeadline(TaskList tasks, String arguments) {
         String[] parts = arguments.split(" /by");
+        System.out.println(parts[1]);
         if (parts.length < 2) {
             System.out.println("Please provide both description and due date for the deadline in this format " +
-                    "deadline <description> /by <due date>.");
+                    "deadline <description> /by <due date> in dd/mm/yyyy time.");
             return;
         }
-        tasks.addTask(new Deadline(parts[0], parts[1]));
+        CustomDate date = Parser.parseDate(parts[1].trim());
+        tasks.addTask(new Deadline(parts[0], date));
     }
 
 }

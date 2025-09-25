@@ -1,23 +1,25 @@
 package tasks;
 
-public class Event extends Task {
-    private String from;
-    private String to;
+import logic.CustomDate;
 
-    public Event(String description, String from, String to) {
+public class Event extends Task {
+    private CustomDate from;
+    private CustomDate to;
+
+    public Event(String description, CustomDate from, CustomDate to) {
         super(description);
         this.from = from;
         this.to = to;
     }
     public String getFrom() {
-        return from;
+        return from.getLocalDateAndTime().toString();
     }
     public String getTo() {
-        return to;
+        return to.getLocalDateAndTime().toString();
     }
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        return "[E]" + super.toString() + " (from: " + getFrom() + " to: " + getTo() + ")";
     }
 }
 

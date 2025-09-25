@@ -1,19 +1,22 @@
 package tasks;
 
-public class Deadline extends Task {
-    private String by;
+import logic.CustomDate;
 
-    public Deadline(String description, String by) {
+public class Deadline extends Task {
+
+    private CustomDate by;
+
+    public Deadline(String description, CustomDate by) {
         super(description);
         this.by = by;
     }
 
     public String getBy() {
-        return this.by;
+        return this.by.getLocalDateAndTime();
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return "[D]" + super.toString() + " (by: " + getBy() + ")";
     }
 }
