@@ -34,7 +34,7 @@ public class Storage {
         tasks.listTasks();
 
     }
-    private void loadData(TaskList tasks) throws IOException {
+    private void loadData(TaskList tasks) {
         String fileName = FILE_PATH + FILE_NAME;
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = br.readLine();

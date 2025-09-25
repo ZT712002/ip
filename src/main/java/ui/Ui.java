@@ -1,11 +1,5 @@
 package ui;
 
-import exception.IllegalTaskNumberException;
-import logic.TaskList;
-import tasks.Deadline;
-import tasks.Event;
-import tasks.Todo;
-
 
 import java.util.Scanner;
 

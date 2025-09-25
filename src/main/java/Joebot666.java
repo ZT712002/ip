@@ -18,7 +18,7 @@ public class Joebot666 {
         greetUser();
     }
 
-    public void run() throws IOException {
+    public void run() {
         while (ui.isPasserActive()) {
             ui.printWelcomeMessage();
             ui.setUserInput();
