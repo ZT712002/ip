@@ -124,12 +124,14 @@ public class Command {
 
     private void handleDeadline(TaskList tasks, String arguments) {
         String[] parts = arguments.split(" /by");
+        System.out.println(parts[1]);
         if (parts.length < 2) {
             System.out.println("Please provide both description and due date for the deadline in this format " +
-                    "deadline <description> /by <due date>.");
+                    "deadline <description> /by <due date> in dd/mm/yyyy time.");
             return;
         }
-        tasks.addTask(new Deadline(parts[0], parts[1]));
+        CustomDate date = Parser.parseDate(parts[1].trim());
+        tasks.addTask(new Deadline(parts[0], date));
     }
 
 }

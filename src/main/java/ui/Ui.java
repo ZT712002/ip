@@ -34,12 +34,14 @@ public class Ui {
     public void printWelcomeMessage() {
         System.out.println("Hello! I'm JoeBot666");
         System.out.println("What can I do for you today?");
+        printLineDivider();
     }
     public void printLineDivider() {
         System.out.println("*************************************");
     }
     public void printGoodbyeMessage() {
         System.out.println("Bye. See you next time!");
+        printWelcomeMessage();
     }
 
 }
