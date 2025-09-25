@@ -65,7 +65,9 @@ public class Storage {
                 case "E":
                     String from = args[3].trim();
                     String to = args[4].trim();
-                    Event event = new Event(description, from, to);
+                    CustomDate dateFrom = Parser.parseDate(from);
+                    CustomDate dateTo = Parser.parseDate(to);
+                    Event event = new Event(description, dateFrom, dateTo);
                     if (isDone) {
                         event.markAsDone();
                     }

@@ -119,7 +119,13 @@ public class Command {
                     "event <description> /from <start> /to <end>.");
             return;
         }
-        tasks.addTask(new Event(parts[0], timeParts[0], timeParts[1]));
+        CustomDate fromDate = Parser.parseDate(timeParts[0].trim());
+        CustomDate toDate = Parser.parseDate(timeParts[1].trim());
+        if (fromDate.isAfter(toDate)) {
+            System.out.println("The start time cannot be after the end time.");
+            return;
+        }
+        tasks.addTask(new Event(parts[0], fromDate, toDate));
     }
 
     private void handleDeadline(TaskList tasks, String arguments) {

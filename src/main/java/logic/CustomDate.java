@@ -25,4 +25,14 @@ public class CustomDate {
         String result = localDate.format(dateFormatter) + " " + localTime.format(timeFormatter);
         return result;
     }
+
+    public boolean isAfter(CustomDate toDate) {
+        if (this.localDate.isAfter(toDate.getLocalDate())) {
+            return true;
+        } else if (this.localDate.isEqual(toDate.getLocalDate())) {
+            return this.localTime.isAfter(toDate.getLocalTime());
+        } else {
+            return false;
+        }
+    }
 }
