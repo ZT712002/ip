@@ -1,4 +1,4 @@
-package command;
+package ui;
 
 import exception.IllegalTaskNumberException;
 import logic.TaskList;
@@ -18,7 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class Passer {
+public class Ui {
     private final Scanner IN;
     private boolean isPasserActive;
     private String userInput;
@@ -30,7 +30,7 @@ public class Passer {
         return userInput;
     }
 
-    public Passer() {
+    public Ui() {
         this.IN = new Scanner(System.in);
         this.isPasserActive = true;
     }
