@@ -7,11 +7,6 @@ import tasks.Event;
 import tasks.Todo;
 
 
-import java.io.BufferedWriter;
-
-import java.io.FileWriter;
-import java.io.IOException;
-
 import java.util.Scanner;
 
 public class Ui {
@@ -42,106 +37,15 @@ public class Ui {
         isPasserActive = false;
     }
 
-    public void processCommand(String userInput, TaskList tasks) {
-        String[] commandParts = userInput.split(" ", 2);
-        String command = commandParts[0].toLowerCase();
-        String arguments = commandParts.length > 1 ? commandParts[1] : "";
-        try {
-            switch (command) {
-            case "list":
-                tasks.listTasks();
-                break;
-            case "mark":
-                handleMarkUnmark(tasks, arguments, true);
-                break;
-            case "unmark":
-                handleMarkUnmark(tasks, arguments, false);
-                break;
-            case "todo":
-                handleTodo(tasks, arguments);
-                break;
-            case "deadline":
-                handleDeadline(tasks, arguments);
-                break;
-            case "event":
-                handleEvent(tasks, arguments);
-                break;
-            case "bye":
-                setIsPasserActiveOff();
-                break;
-            case "delete":
-                handleDelete(tasks, arguments);
-                break;
-            default:
-                System.out.println("I'm sorry, but I don't know what that means.");
-
-            }
-
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
-
+    public void printWelcomeMessage() {
+        System.out.println("Hello! I'm JoeBot666");
+        System.out.println("What can I do for you today?");
     }
-
-
-    private static void handleDelete(TaskList tasks, String arguments) {
-        try {
-            int taskNumber = Integer.parseInt(arguments.trim());
-            tasks.deleteTask(taskNumber);
-        } catch (NumberFormatException e) {
-            System.out.println("Please provide a valid task number.");
-        } catch (IllegalTaskNumberException e) {
-            throw new RuntimeException(e);
-        }
+    public void printLineDivider() {
+        System.out.println("*************************************");
     }
-
-    private void handleMarkUnmark(TaskList tasks, String arguments, boolean isMark) {
-        try {
-            int taskNumber = Integer.parseInt(arguments.trim());
-            if (isMark) {
-                tasks.markTask(taskNumber);
-            } else {
-                tasks.unmarkTask(taskNumber);
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Please provide a valid task number.");
-        } catch (IllegalTaskNumberException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void handleTodo(TaskList tasks, String arguments) {
-        if (arguments.isEmpty()) {
-            System.out.println("The description of a todo cannot be empty.");
-            return;
-        }
-        tasks.addTask(new Todo(arguments));
-    }
-
-    private void handleEvent(TaskList tasks, String arguments) {
-        String[] parts = arguments.split(" /from");
-        if (parts.length < 2) {
-            System.out.println("Please provide both description and start time for the event in this format " +
-                    "event <description> /from <start> /to <end>.");
-            return;
-        }
-        String[] timeParts = parts[1].split(" /to");
-        if (timeParts.length < 2) {
-            System.out.println("Please provide both description and start time for the event in this format " +
-                    "event <description> /from <start> /to <end>.");
-            return;
-        }
-        tasks.addTask(new Event(parts[0], timeParts[0], timeParts[1]));
-    }
-
-    private void handleDeadline(TaskList tasks, String arguments) {
-        String[] parts = arguments.split(" /by");
-        if (parts.length < 2) {
-            System.out.println("Please provide both description and due date for the deadline in this format " +
-                    "deadline <description> /by <due date>.");
-            return;
-        }
-        tasks.addTask(new Deadline(parts[0], parts[1]));
+    public void printGoodbyeMessage() {
+        System.out.println("Bye. See you next time!");
     }
 
 }

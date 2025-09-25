@@ -1,3 +1,5 @@
+import logic.Command;
+import logic.Parser;
 import storage.Storage;
 import ui.Ui;
 import logic.TaskList;
@@ -18,9 +20,16 @@ public class Joebot666 {
 
     public void run() throws IOException {
         while (ui.isPasserActive()) {
-            System.out.println("*************************************");
+            ui.printWelcomeMessage();
             ui.setUserInput();
-            ui.processCommand(ui.getUserInput(), tasks);
+            String unprocessedInput = ui.getUserInput();
+            Command c = Parser.parseCommand(unprocessedInput);
+            c.processCommand(tasks);
+            boolean isExitCommand = c.getExit();
+            if (isExitCommand) {
+                ui.setIsPasserActiveOff();
+            }
+            ui.printLineDivider();
         }
         saveDataAndExit();
     }
@@ -31,13 +40,11 @@ public class Joebot666 {
         } catch (IOException e) {
             System.out.println("Error saving data: " + e.getMessage());
         }
-        System.out.println("Bye. See you next time!");
-        System.out.println("*************************************");
+        ui.printGoodbyeMessage();
     }
 
     private void greetUser() throws IOException {
-        System.out.println("Hello I'm JoeBot666");
-        System.out.println("What can I do for you today?");
+        ui.printWelcomeMessage();
         storage.initializeList(tasks);
     }
 
