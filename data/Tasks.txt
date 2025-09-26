@@ -6,3 +6,6 @@ T , 0 , read test
 T , 0 , read lol
 E , 0 , read once , 26/09/2025 1800 , 26/09/2025 1900
 D , 0 , read twice , 26/09/2025 2000
+T , 0 , read book
+T , 0 , return book
+D , 0 , return book , 15/09/2025 1800
