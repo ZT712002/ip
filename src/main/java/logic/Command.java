@@ -90,7 +90,6 @@ public class Command {
         if (searchResults.isEmpty()) {
             System.out.println("No matching tasks found.");
         } else {
-            System.out.println("Here are your ");
             for (Task t : searchResults) {
                 System.out.println(t.toString());
             }
