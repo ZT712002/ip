@@ -11,6 +11,20 @@ The chatbot interacts with users through a command-line interface.
 It uses classes such as TaskList, Command, Parser, Storage, and Ui to handle
 various functionalities.
 
+# Section Links
+1. [Quick Start Guide](#quick-start-guide)
+2. [Adding Todo tasks](#adding-Todo-tasks)
+3. [Adding Deadline Task](#adding-deadline-task)
+4. [Adding Event Task](#adding-event-task)
+5. [Listing Tasks](#listing-tasks)
+6. [Marking Tasks as Done](#marking-tasks-as-done)
+7. [Unmarking Tasks](#unmarking-tasks)
+8. [Saving Data to File](#saving-data-to-file)
+9. [Loading Data from File](#loading-data-from-file)
+10. [Deleting Tasks](#deleting-tasks)
+11. [Finding Tasks](#finding-tasks)
+12. [Exiting the Program](#exiting-the-program)
+
 ## Quick Start Guide
 1. Ensure you have Java 17 or above installed on your system.
 2. Download the Joebot666.jar file from the releases section of the repository.
@@ -20,7 +34,7 @@ various functionalities.
 6. A welcome message will be displayed, and you can start interacting with the chatbot.
 
 
-## Adding todo tasks
+## Adding Todo tasks
 Adds TODO tasks to your task list.
 
 Description must not be empty.
