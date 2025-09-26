@@ -22,7 +22,6 @@ public class TaskList {
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
     public void addTask(Task task, boolean isLoading){
-        //add task without printing when loading from file
         tasks.add(task);
     }
 
@@ -108,5 +107,17 @@ public class TaskList {
         } catch (IllegalTaskNumberException e) {
             throw new IllegalTaskNumberException();
         }
+    }
+
+    public boolean isEmpty() {
+        return tasks.isEmpty();
+    }
+
+    public Task getTasks(int index) {
+        return tasks.get(index);
+    }
+
+    public ArrayList<Task> getTaskList() {
+        return tasks;
     }
 }
