@@ -1,5 +1,10 @@
 package logic;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+
 /**
  * The Parser class is responsible for parsing user input commands and date/time strings.
  * It provides methods to extract the command type and arguments from a command string,
@@ -26,18 +31,14 @@ public class Parser {
      * @return
      */
     public static CustomDate parseDate(String dateTimeString){
-        String[] dateTimeParts = dateTimeString.split(" ");
-        String datePart = dateTimeParts[0];
-        String timePart = dateTimeParts.length > 1 ? dateTimeParts[1] : "0000";
-
-        String[] dateComponents = datePart.split("/");
-        int year = Integer.parseInt(dateComponents[2]);
-        int month = Integer.parseInt(dateComponents[1]);
-        int day = Integer.parseInt(dateComponents[0]);
-
-        int hour = Integer.parseInt(timePart.substring(0, 2));
-        int minute = Integer.parseInt(timePart.substring(2, 4));
-
-        return new CustomDate(java.time.LocalDate.of(year, month, day), java.time.LocalTime.of(hour, minute));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu HHmm")
+                .withResolverStyle(ResolverStyle.STRICT);
+        try {
+            LocalDateTime localDateTime = LocalDateTime.parse(dateTimeString, formatter);
+            return new CustomDate(localDateTime.toLocalDate(), localDateTime.toLocalTime());
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid date format: " + dateTimeString);
+            return null;
+        }
     }
 }

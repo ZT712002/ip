@@ -221,6 +221,10 @@ public class Command {
             System.out.println("The start time cannot be after the end time.");
             return;
         }
+        if(fromDate == null || toDate == null) {
+            System.out.println("Please provide the date and time in the format dd/mm/yyyy HHmm");
+            return;
+        }
         tasks.addTask(new Event(parts[0], fromDate, toDate));
     }
 
@@ -242,6 +246,10 @@ public class Command {
             return;
         }
         CustomDate date = Parser.parseDate(parts[1].trim());
+        if(date == null) {
+            System.out.println("Please provide the date and time in the format dd/mm/yyyy HHmm");
+            return;
+        }
         tasks.addTask(new Deadline(parts[0], date));
     }
 
