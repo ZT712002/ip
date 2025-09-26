@@ -1,2 +1,8 @@
 D , 0 , test , 25/09/2025 1800
 E , 0 , hello , 24/08/2025 0000 , 25/09/2025 1700
+T , 0 , read book
+T , 0 , read smthing
+T , 0 , read test
+T , 0 , read lol
+E , 0 , read once , 26/09/2025 1800 , 26/09/2025 1900
+D , 0 , read twice , 26/09/2025 2000

@@ -3,7 +3,11 @@ package logic;
 import exception.IllegalTaskNumberException;
 import tasks.Deadline;
 import tasks.Event;
+import tasks.Task;
 import tasks.Todo;
+
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 
 public class Command {
     private String commandType;
@@ -53,6 +57,9 @@ public class Command {
             case "delete":
                 handleDelete(tasks, arguments);
                 break;
+                case "find":
+                    handleFind(tasks, arguments);
+                    break;
             default:
                 System.out.println("I'm sorry, but I don't know what that means.");
 
@@ -61,6 +68,33 @@ public class Command {
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
+
+    }
+
+    private void handleFind(TaskList tasks, String arguments) {
+        if (arguments.isEmpty()) {
+            System.out.println("The description of a find cannot be empty.");
+            return;
+        }
+        if (tasks.isEmpty()) {
+            System.out.println("Your task list is empty.");
+            return;
+        }
+        System.out.println("Here are the matching tasks in your list:");
+        ArrayList<Task> searchResults = new ArrayList<>();
+        for (Task t : tasks.getTaskList()) {
+            if (t.getDescription().contains(arguments)) {
+                searchResults.add(t);
+            }
+        }
+        if (searchResults.isEmpty()) {
+            System.out.println("No matching tasks found.");
+        } else {
+            for (Task t : searchResults) {
+                System.out.println(t.toString());
+            }
+        }
+
 
     }
 
