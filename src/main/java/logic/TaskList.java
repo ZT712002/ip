@@ -8,6 +8,12 @@ import tasks.Todo;
 
 import java.util.ArrayList;
 
+/**
+ * Manages a list of tasks, allowing addition, deletion, marking, unmarking, and listing of tasks.
+ * Provides methods to manipulate and retrieve tasks from the list.
+ * Supports different types of tasks such as Todo, Deadline, and Event.
+ * @param tasks The list of tasks being managed.
+ */
 public class TaskList {
     private ArrayList<Task> tasks;
 
@@ -36,6 +42,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Marks the task at the given task number as done.
+     * @param taskNumber
+     * @throws IllegalTaskNumberException
+     */
     public void markTask(int taskNumber) throws IllegalTaskNumberException {
         try {
             if (isValidIndex(taskNumber)) {
@@ -51,6 +62,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Unmarks the task at the given task number as not done.
+     * @param taskNumber
+     * @throws IllegalTaskNumberException
+     */
     public void unmarkTask(int taskNumber) throws IllegalTaskNumberException {
         try {
             if (isValidIndex(taskNumber)) {
@@ -66,6 +82,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Checks if the given task number is a valid index in the task list.
+     * @param taskNumber
+     * @return
+     * @throws IllegalTaskNumberException
+     */
     private boolean isValidIndex(int taskNumber) throws IllegalTaskNumberException {
         return taskNumber > 0 && taskNumber <= tasks.size();
     }
@@ -74,8 +96,12 @@ public class TaskList {
         return tasks.size();
     }
 
+    /**
+     * Returns the task at the given index in a specific string format for storage.
+     * @param i
+     * @return
+     */
     public String getTask(int i) {
-        //Task temp = tasks.get(i);
         String result ="";
         if(tasks.get(i) instanceof Todo) {
             Todo temp = (Todo) tasks.get(i);
@@ -93,6 +119,12 @@ public class TaskList {
         }
         return result;
     }
+
+    /**
+     * Deletes the task at the given task number from the task list.
+     * @param taskNumber
+     * @throws IllegalTaskNumberException
+     */
 
     public void deleteTask(int taskNumber) throws IllegalTaskNumberException {
         try {
