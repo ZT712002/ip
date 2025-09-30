@@ -77,6 +77,7 @@ public class Joebot666 {
     private void greetUser() throws IOException {
         ui.printWelcomeMessage();
         storage.initializeList(tasks);
+        ui.printLineDivider();
     }
     /** main method to start the chatbot application.
      * It creates an instance of Joebot666 and calls the run method to start the interaction loop.
