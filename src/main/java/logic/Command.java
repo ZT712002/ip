@@ -238,6 +238,11 @@ public class Command {
      * @param arguments
      */
     private void handleDeadline(TaskList tasks, String arguments) {
+        if(arguments.isEmpty()){
+            System.out.println("Please provide both description and due date for the deadline in this format \" +\n" +
+                    "                    \"deadline <description> /by <due date> in dd/mm/yyyy time.");
+            return;
+        }
         String[] parts = arguments.split(" /by");
         System.out.println(parts[1]);
         if (parts.length < 2) {
