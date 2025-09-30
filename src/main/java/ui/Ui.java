@@ -50,7 +50,6 @@ public class Ui {
     }
     public void printGoodbyeMessage() {
         System.out.println("Bye. See you next time!");
-        printWelcomeMessage();
     }
 
 }

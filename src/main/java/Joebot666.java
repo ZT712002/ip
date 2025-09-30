@@ -42,7 +42,6 @@ public class Joebot666 {
      */
 
     public void run() {
-        ui.printWelcomeMessage();
         while (ui.isPasserActive()) {
             ui.setUserInput();
             String unprocessedInput = ui.getUserInput();
