@@ -17,25 +17,40 @@ public abstract class Task {
         this.isDone = false;
     }
 
-
+    /**
+     * Returns the description of the task.
+     * @return The task description.
+     */
     public String getDescription() {
         return this.description;
     }
-
+    /**
+     * Marks the task as done by setting the isDone attribute to true.
+     */
 
     public void markAsDone() {
         this.isDone = true;
     }
 
-
+    /**
+     * Unmarks the task as not done by setting the isDone attribute to false.
+     */
     public void unmarkAsDone() {
         this.isDone = false;
     }
-
+    /**
+     * Returns the status icon of the task.
+     * @return "[X]" if the task is done, "[ ]" otherwise.
+     */
     public String getStatusIcon() {
         return (isDone ? "[X]" : "[ ]");
     }
 
+    /**
+     * Returns the string representation of the task.
+     * This includes the status icon and the task description.
+     * @return A string representing the task.
+     */
     @Override
     public String toString() {
         return getStatusIcon() + " " + getDescription();

@@ -43,7 +43,7 @@ public class CustomDate {
     }
 
     /**
-     * Method to compare if this CustomDate is after another CustomDate.
+     * Returns true if CustomDate is after the toDate false otherwise..
      * @param toDate
      * @return true if this CustomDate is after the toDate, false otherwise.
      */

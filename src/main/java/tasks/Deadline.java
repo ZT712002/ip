@@ -18,16 +18,27 @@ import logic.CustomDate;
 public class Deadline extends Task {
 
     private CustomDate by;
-
+    /** * Constructor for Deadline class.
+     * @param description The description of the deadline task.
+     * @param by The due date/time of the deadline task.
+     */
     public Deadline(String description, CustomDate by) {
         super(description);
         this.by = by;
     }
 
+    /**
+     * Method to get the due date/time of the deadline task.
+     * @return
+     */
     public String getBy() {
         return this.by.getLocalDateAndTime();
     }
-
+    /**
+     * Returns the string representation of the Deadline task.
+     * Overrides the toString method from the Task class.
+     * @return A string representing the Deadline task, including its type, status, and due date/time.
+     */
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + getBy() + ")";

@@ -16,21 +16,36 @@ import java.util.ArrayList;
  */
 public class TaskList {
     private ArrayList<Task> tasks;
-
+    /**
+     * Constructor for TaskList class.
+     * Initializes an empty list of tasks.
+     */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
-
+    /**
+     * Adds a new task to the task list and prints a confirmation message.
+     * @param task The task to be added to the list.
+     */
     public void addTask(Task task) {
         tasks.add(task);
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + task);
         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
     }
+    /**
+     * Adds a new task to the task list without printing a confirmation message.
+     * This method is used when loading tasks from storage.
+     * @param task The task to be added to the list.
+     * @param isLoading A boolean flag indicating that the task is being loaded from storage.
+     */
     public void addTask(Task task, boolean isLoading){
         tasks.add(task);
     }
-
+    /**
+     * Lists all tasks in the task list with their respective indices.
+     * If the list is empty, it prints a message indicating that there are no tasks.
+     */
     public void listTasks() {
         if (tasks.isEmpty()) {
             System.out.println("Your task list is empty.");
@@ -91,7 +106,10 @@ public class TaskList {
     private boolean isValidIndex(int taskNumber) throws IllegalTaskNumberException {
         return taskNumber > 0 && taskNumber <= tasks.size();
     }
-
+    /**
+     * Returns the size of the task list.
+     * @return
+     */
     public int getSize() {
         return tasks.size();
     }
@@ -140,15 +158,17 @@ public class TaskList {
             throw new IllegalTaskNumberException();
         }
     }
-
+    /**
+     * Checks if the task list is empty.
+     * @return
+     */
     public boolean isEmpty() {
         return tasks.isEmpty();
     }
-
-    public Task getTasks(int index) {
-        return tasks.get(index);
-    }
-
+    /**
+     * Returns the entire list of tasks.
+     * @return
+     */
     public ArrayList<Task> getTaskList() {
         return tasks;
     }

@@ -20,18 +20,38 @@ import logic.CustomDate;
 public class Event extends Task {
     private CustomDate from;
     private CustomDate to;
-
+    /**
+     * Constructor for Event class.
+     * @param description The description of the event task.
+     * @param from The start date/time of the event.
+     * @param to The end date/time of the event.
+     */
     public Event(String description, CustomDate from, CustomDate to) {
         super(description);
         this.from = from;
         this.to = to;
     }
+    /**
+     * Method to get the start date/time of the event.
+     * @return Formatted start date and time string.
+     */
     public String getFrom() {
         return from.getLocalDateAndTime().toString();
     }
+
+    /**
+     * Returns the end date/time of the event.
+     * @return
+     */
     public String getTo() {
         return to.getLocalDateAndTime().toString();
     }
+
+    /**
+     * Returns the string representation of the Event task.
+     * Overrides the toString method from the Task class.
+     * @return
+     */
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: " + getFrom() + " to: " + getTo() + ")";
